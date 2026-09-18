@@ -1,0 +1,534 @@
+
+<!-- saved from url=(0042)file:///D:/project-7%20cme/attendance.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Student Attendance</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+
+    min-height: 100vh;
+
+    background: #f1f5f9;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 20px;
+}
+
+.card {
+
+    width: 100%;
+
+    max-width: 450px;
+
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 25px
+        rgba(0,0,0,0.12);
+}
+
+h1 {
+
+    text-align: center;
+
+    color: #172554;
+
+    margin-bottom: 10px;
+}
+
+.subtitle {
+
+    text-align: center;
+
+    color: #64748b;
+
+    margin-bottom: 25px;
+}
+
+label {
+
+    display: block;
+
+    font-weight: bold;
+
+    color: #334155;
+
+    margin-top: 18px;
+
+    margin-bottom: 8px;
+}
+
+select {
+
+    width: 100%;
+
+    padding: 14px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 9px;
+
+    font-size: 16px;
+
+    background: white;
+
+    cursor: pointer;
+}
+
+select:focus {
+
+    outline: none;
+
+    border-color: #2563eb;
+}
+
+
+/* DATE TIME */
+
+.datetime {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+.datetime-box {
+
+    flex: 1;
+
+    background: #f8fafc;
+
+    border: 1px solid #e2e8f0;
+
+    padding: 13px;
+
+    border-radius: 9px;
+
+    text-align: center;
+}
+
+.datetime-box small {
+
+    display: block;
+
+    color: #64748b;
+
+    margin-bottom: 5px;
+}
+
+.datetime-box strong {
+
+    color: #172554;
+}
+
+
+/* BUTTON */
+
+button {
+
+    width: 100%;
+
+    padding: 15px;
+
+    margin-top: 25px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: #2563eb;
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+button:hover {
+
+    background: #1d4ed8;
+}
+
+
+/* SUCCESS */
+
+.success {
+
+    display: none;
+
+    text-align: center;
+}
+
+.success-icon {
+
+    width: 75px;
+
+    height: 75px;
+
+    margin: auto;
+
+    border-radius: 50%;
+
+    background: #dcfce7;
+
+    color: #16a34a;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 40px;
+
+    font-weight: bold;
+
+    margin-bottom: 20px;
+}
+
+.success h2 {
+
+    color: #166534;
+
+    margin-bottom: 25px;
+}
+
+
+/* DETAILS */
+
+.details {
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    text-align: left;
+}
+
+.row {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 15px;
+
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.row:last-child {
+
+    border-bottom: none;
+}
+
+.row span:first-child {
+
+    color: #64748b;
+
+    font-weight: bold;
+}
+
+.row span:last-child {
+
+    color: #172554;
+
+    font-weight: bold;
+}
+
+
+/* ERROR */
+
+.error {
+
+    display: none;
+
+    margin-top: 15px;
+
+    padding: 12px;
+
+    background: #fee2e2;
+
+    color: #991b1b;
+
+    border-radius: 8px;
+
+    text-align: center;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="card">
+
+
+<!-- =========================
+     ATTENDANCE FORM
+========================= -->
+
+<div id="attendanceForm">
+
+    <h1>
+        Student Attendance
+    </h1>
+
+    <p class="subtitle">
+        Select your PIN
+    </p>
+
+
+    <!-- PIN -->
+
+    <label>
+        Student PIN Number
+    </label>
+
+    <select id="pin">
+
+        <option value="">
+            -- Select PIN Number --
+        </option>
+
+    <option value="24273-CM-001">24273-CM-001</option><option value="24273-CM-002">24273-CM-002</option><option value="24273-CM-003">24273-CM-003</option><option value="24273-CM-004">24273-CM-004</option><option value="24273-CM-005">24273-CM-005</option><option value="24273-CM-006">24273-CM-006</option><option value="24273-CM-007">24273-CM-007</option><option value="24273-CM-008">24273-CM-008</option><option value="24273-CM-009">24273-CM-009</option><option value="24273-CM-010">24273-CM-010</option><option value="24273-CM-011">24273-CM-011</option><option value="24273-CM-012">24273-CM-012</option><option value="24273-CM-013">24273-CM-013</option><option value="24273-CM-014">24273-CM-014</option><option value="24273-CM-015">24273-CM-015</option><option value="24273-CM-016">24273-CM-016</option><option value="24273-CM-017">24273-CM-017</option><option value="24273-CM-018">24273-CM-018</option><option value="24273-CM-019">24273-CM-019</option><option value="24273-CM-020">24273-CM-020</option><option value="24273-CM-021">24273-CM-021</option><option value="24273-CM-022">24273-CM-022</option><option value="24273-CM-023">24273-CM-023</option><option value="24273-CM-024">24273-CM-024</option><option value="24273-CM-025">24273-CM-025</option><option value="24273-CM-026">24273-CM-026</option><option value="24273-CM-027">24273-CM-027</option><option value="24273-CM-028">24273-CM-028</option><option value="24273-CM-029">24273-CM-029</option><option value="24273-CM-030">24273-CM-030</option><option value="24273-CM-031">24273-CM-031</option><option value="24273-CM-032">24273-CM-032</option><option value="24273-CM-033">24273-CM-033</option><option value="24273-CM-034">24273-CM-034</option><option value="24273-CM-035">24273-CM-035</option><option value="24273-CM-036">24273-CM-036</option><option value="24273-CM-037">24273-CM-037</option><option value="24273-CM-038">24273-CM-038</option><option value="24273-CM-039">24273-CM-039</option><option value="24273-CM-040">24273-CM-040</option><option value="24273-CM-041">24273-CM-041</option><option value="24273-CM-042">24273-CM-042</option><option value="24273-CM-043">24273-CM-043</option><option value="24273-CM-044">24273-CM-044</option><option value="24273-CM-045">24273-CM-045</option><option value="24273-CM-046">24273-CM-046</option><option value="24273-CM-047">24273-CM-047</option><option value="24273-CM-048">24273-CM-048</option><option value="24273-CM-049">24273-CM-049</option><option value="24273-CM-050">24273-CM-050</option></select>
+
+
+    <!-- BUTTON -->
+
+    <button onclick="markAttendance()">
+
+        Mark Attendance
+
+    </button>
+
+
+    <!-- ERROR -->
+
+    <div id="error" class="error">
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     SUCCESS PAGE
+========================= -->
+
+<div id="successPage" class="success">
+
+
+    <div class="success-icon">
+        ✓
+    </div>
+
+
+    <h2>
+        Attendance Successfully Marked
+    </h2>
+
+
+    <div class="details">
+
+
+        <div class="row">
+
+            <span>
+                PIN
+            </span>
+
+            <span id="resultPIN">
+                --
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+    <button onclick="newAttendance()">
+
+        Done
+
+    </button>
+
+
+</div>
+
+
+</div>
+
+
+
+<script>
+
+
+/* =====================================
+   CREATE PIN LIST
+===================================== */
+
+const pinSelect =
+    document.getElementById("pin");
+
+
+for (
+    let i = 1;
+    i <= 50;
+    i++
+) {
+
+    const pin =
+        "24273-CM-" +
+        String(i).padStart(3, "0");
+
+
+    const option =
+        document.createElement("option");
+
+
+    option.value =
+        pin;
+
+
+    option.textContent =
+        pin;
+
+
+    pinSelect.appendChild(
+        option
+    );
+
+}
+
+
+/* =====================================
+   MARK ATTENDANCE
+===================================== */
+
+function markAttendance() {
+
+
+    const pin =
+        document.getElementById(
+            "pin"
+        ).value;
+
+
+
+    const error =
+        document.getElementById(
+            "error"
+        );
+
+
+    /*
+       CHECK PIN
+    */
+
+    if (!pin) {
+
+        error.innerText =
+            "Please select your PIN number.";
+
+        error.style.display =
+            "block";
+
+        return;
+
+    }
+
+    /*
+       SHOW SUCCESS PAGE
+    */
+
+    document.getElementById(
+        "resultPIN"
+    ).innerText =
+        pin;
+
+
+    document.getElementById(
+        "attendanceForm"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "successPage"
+    ).style.display =
+        "block";
+
+}
+
+
+
+/* =====================================
+   NEW ATTENDANCE
+===================================== */
+
+function newAttendance() {
+
+    document.getElementById(
+        "attendanceForm"
+    ).style.display =
+        "block";
+
+
+    document.getElementById(
+        "successPage"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "pin"
+    ).value = "";
+
+
+    document.getElementById(
+        "error"
+    ).style.display =
+        "none";
+
+}
+
+</script>
+
+
+
+
+</body></html>
